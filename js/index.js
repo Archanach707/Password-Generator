@@ -2,7 +2,7 @@ const resultEl = document.getElementById('result')
 const lengthEl = document.getElementById('length')
 const uppercaseEl = document.getElementById('uppercase')
 const lowercaseEl = document.getElementById('lowercase')
-const numbersEl = document.getElementById('number')
+const numbersEl = document.getElementById('numbers')
 const symbolsEl = document.getElementById('symbols')
 const generateEl = document.getElementById('generate')
 const clipboardEl = document.getElementById('clipboard')
@@ -17,11 +17,15 @@ const randomFunc = {
 
 generateEl.addEventListener('click', () => {
   const length = +lengthEl.value 
-  const hasLower = +lowercaseEl.value 
-  const hasUpper = +uppercaseEl.value 
-  const hasNumber = +numbersEl.value 
-  const hassymbol = +symbolsEl.value 
+  const hasLower = +lowercaseEl.checked 
+  const hasUpper = +uppercaseEl.checked 
+  const hasNumber = +numbersEl.checked 
+  const hasSymbol = +symbolsEl.checked 
+
+  resultEl.innerText = generatePassword(hasLower, hasUpper, hasNumber, hasSymbol, length)
 })
+
+
 
 function getRandomLower() {
   return String.fromCharCode(Math.floor(Math.random() * 26) + 97)
